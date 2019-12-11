@@ -152,6 +152,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/tv_bg"
+                            android:cursorVisible="true"
                             android:ems="10"
                             android:hint="Agregar comentario"
                             android:inputType="textPersonName"

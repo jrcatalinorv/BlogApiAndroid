@@ -3,18 +3,26 @@ package app.com.blogapi.entidades;
 public class Comments {
 
     String body;
-    String createdAt;
+    long createdAt;
     int id;
     int postId;
     String userEmail;
     int userId;
-    String UseName;
+    String userName;
+
+    public Comments(String body, int postId, String userEmail, int userId, String userName) {
+        this.body = body;
+        this.postId = postId;
+        this.userEmail = userEmail;
+        this.userId = userId;
+        this.userName = userName;
+    }
 
     public String getBody() {
         return body;
     }
 
-    public String getCreatedAt() {
+    public long getCreatedAt() {
         return createdAt;
     }
 
@@ -34,7 +42,7 @@ public class Comments {
         return userId;
     }
 
-    public String getUseName() {
-        return UseName;
+    public String getUserName() {
+        return userName;
     }
 }

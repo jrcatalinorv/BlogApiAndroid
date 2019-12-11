@@ -30,7 +30,8 @@ import retrofit2.Response;
 public class VistaPost extends AppCompatActivity {
 
     private TextView title, body, comments, likes, views, tags, author;
-    private String postId, authToken;
+    private String postId, authToken, userName,userEmail;
+    private int userId;
     private Switch btnLike;
     private Button btnComentar;
     private EditText etComentario;
@@ -56,11 +57,11 @@ public class VistaPost extends AppCompatActivity {
         * */
         SharedPreferences pref = getApplicationContext().getSharedPreferences("BlogApiPref", MODE_PRIVATE);
         authToken = pref.getString("token", null);
+        userName = pref.getString("name",null);
+        userEmail = pref.getString("email",null);
+        userId = pref.getInt("id",0);
 
-
-        /*
-        *
-        * */
+        /******/
         title = findViewById(R.id.vistaPostTitle);
         body = findViewById(R.id.vistaPostBody);
         comments = findViewById(R.id.vistaPostComments);
@@ -77,9 +78,8 @@ public class VistaPost extends AppCompatActivity {
         rvcomentariosLista = findViewById(R.id.rvComentarios);
 
         rvcomentariosLista.setLayoutManager(new LinearLayoutManager(this));
-        /*
-        * Obtener los datos del Post Seleccionado
-        * */
+
+        /* Obtener los datos del Post Seleccionado */
         Call <Entradas> call = postService.getEstradaId("Bearer "+authToken, Integer.parseInt(postId));
         call.enqueue(new Callback<Entradas>() {
             @Override
@@ -112,7 +112,6 @@ public class VistaPost extends AppCompatActivity {
             public void onResponse(Call<List<Comments>> callComments, Response<List<Comments>> responseComments) {
 
                 if (responseComments.isSuccessful()) {
-                    //Toast.makeText(VistaPost.this, "CC: "+responseComments.code(), Toast.LENGTH_SHORT).show();
 
                     commentsList = responseComments.body();
                     adaptadorComentario = new AdaptadorComentario(commentsList);
@@ -129,9 +128,7 @@ public class VistaPost extends AppCompatActivity {
         });
 
 
-        /*
-        * Pulsar el boton de like
-        * */
+        /* Pulsar el boton de like */
         btnLike.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -174,13 +171,32 @@ public class VistaPost extends AppCompatActivity {
         });
 
 
-        /*
-        * Agregar un comentario al post
-        * */
+        /* Agregar un comentario al post */
         btnComentar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    //
+                String texto = etComentario.getText().toString();
+
+                Comments comments = new Comments(texto,Integer.parseInt(postId),userEmail,userId,userName);
+                Call<Comments> call = postService.publicarComentario("Bearer "+authToken,comments);
+                call.enqueue(new Callback<Comments>() {
+                    @Override
+                    public void onResponse(Call<Comments> call, Response<Comments> response) {
+                        if (response.isSuccessful()) {
+
+                        }else{
+                            Toast.makeText(VistaPost.this, "Error: "+response.code(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Comments> call, Throwable t) {
+
+                    }
+                });
+
+
             }
         });
 

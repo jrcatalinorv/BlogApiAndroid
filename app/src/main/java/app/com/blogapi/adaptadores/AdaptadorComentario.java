@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.sql.Date;
 import java.util.List;
 import app.com.blogapi.entidades.Comments;
 import app.com.blogapi.R;
@@ -30,8 +32,10 @@ public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentari
     public void onBindViewHolder(@NonNull AdaptadorComentario.ViewHolder holder, int position) {
 
         Comments comments = dataComments.get(position);
-        holder.author.setText(comments.getUseName());
-        holder.date.setText(String.valueOf(comments.getCreatedAt()));
+        Date date = new Date(comments.getCreatedAt());
+
+        holder.author.setText(comments.getUserName()+" ("+comments.getUserEmail()+")");
+        holder.date.setText(String.valueOf(date));
         holder.comment.setText(comments.getBody());
     }
 
