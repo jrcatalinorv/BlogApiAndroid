@@ -37,9 +37,9 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
     @Override
     public void onBindViewHolder(@NonNull AdaptadorEntrada.ViewHolder holder, int position) {
 
-        Entradas entradas = dataPost.get(position);
+       Entradas entradas = dataPost.get(position);
 
-        holder.title.setText(entradas.getTitle());
+       holder.title.setText(entradas.getTitle());
        holder.body.setText(entradas.getBody());
        holder.user.setText("By: "+ entradas.getUserName());
        holder.date.setText("");
