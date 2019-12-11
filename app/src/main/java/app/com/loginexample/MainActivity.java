@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         if (response.code()== 201){
                             User user = response.body();
 
-                            /* Guardar mi token el en shared preference */
+                            /* Guardar mi token el en shared preference y otros datos del usuarios */
                             editor.putInt("id", user.getId());
                             editor.putString("token", user.getToken());
                             editor.putString("name", user.getName());

@@ -18,6 +18,14 @@ public class Entradas {
     String userEmail;
     String userName;
 
+    public Entradas(int userId, String body, String[] tags, String title, String userEmail, String userName) {
+        this.userId = userId;
+        this.body = body;
+        this.tags = tags;
+        this.title = title;
+        this.userEmail = userEmail;
+        this.userName = userName;
+    }
 
     public String getBody() {
         return body;
@@ -67,9 +75,5 @@ public class Entradas {
         return views;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return super.toString();
-    }
+
 }

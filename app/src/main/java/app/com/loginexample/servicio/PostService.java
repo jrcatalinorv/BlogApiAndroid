@@ -2,8 +2,10 @@ package app.com.loginexample.servicio;
 
 import java.util.List;
 
+import app.com.loginexample.entidades.Comments;
 import app.com.loginexample.entidades.Entradas;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -16,14 +18,18 @@ public interface PostService {
     Call<List<Entradas>> getEstrada(@Header("Authorization") String token);
 
     @GET("post/{id}")
-    Call<List<Entradas>> getEstradaId(@Header("Authorization") String token, @Path("id") int id);
+    Call <Entradas> getEstradaId(@Header("Authorization") String token, @Path("id") int id);
 
     @PUT("post/{id}/like")
-    Call<List<Entradas>> likepost(@Header("Authorization") String token, @Path("id") int id);
+    Call<Entradas> likepost(@Header("Authorization") String token, @Path("id") int id);
 
     @DELETE("post/{id}/like")
-    Call<List<Entradas>> delLikepost(@Header("Authorization") String token, @Path("id") int id);
+    Call<Entradas> delLikepost(@Header("Authorization") String token, @Path("id") int id);
 
-    @POST("post/{id}/comment")
-    Call<List<Entradas>> comentarPost(@Header("Authorization") String token, @Path("id") int id);
+    @GET("post/{id}/comment")
+    Call<List<Comments>> comentariosPost(@Header("Authorization") String token, @Path("id") int id);
+
+
+    @POST("post")
+    Call <Entradas> entradaNueva(@Header("Authorization") String token, @Body Entradas entradas);
 }

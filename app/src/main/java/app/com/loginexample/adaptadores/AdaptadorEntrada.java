@@ -7,14 +7,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Arrays;
 import java.util.List;
 import app.com.loginexample.R;
 import app.com.loginexample.entidades.Entradas;
 
 public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.ViewHolder>
-        {
+        implements View.OnClickListener  {
 
     public List<Entradas> dataPost;
+    private View.OnClickListener listener;
 
 
     public AdaptadorEntrada(List<Entradas> dataPost){
@@ -27,6 +30,7 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
+        view.setOnClickListener(this);
         return viewHolder;
     }
 
@@ -39,17 +43,29 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
        holder.body.setText(entradas.getBody());
        holder.user.setText("By: "+ entradas.getUserName());
        holder.date.setText("");
-       holder.tags.setText("Tags: ");
+       holder.tags.setText("Tags: "+convertArrayToString(entradas.getTags()));
        holder.comments.setText(String.valueOf(entradas.getComments()));
        holder.likes.setText(String.valueOf(entradas.getLikes()));
        holder.viewsCty.setText(String.valueOf(entradas.getViews()));
+       holder.id.setText(String.valueOf(entradas.getId()));
     }
 
     @Override
     public int getItemCount() { return dataPost.size(); }
 
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(listener != null){
+            listener.onClick(v);
+        }
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView title, body, user, date, tags, comments, likes, viewsCty;
+        private TextView title, body, user, date, tags, comments, likes, viewsCty, id;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,15 +80,13 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
             likes.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
             viewsCty = itemView.findViewById(R.id.tvViews);
             viewsCty.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_views, 0, 0, 0);
+            id = itemView.findViewById(R.id.tvPostId);
         }
+    }
 
+
+    public static String convertArrayToString(String[] strArray) {
+        return Arrays.toString(strArray);
     }
 
 }
-
-
-
-
-
-
-

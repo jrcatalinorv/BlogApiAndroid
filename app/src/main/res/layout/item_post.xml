@@ -7,15 +7,15 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="0dp"
         android:layout_marginBottom="5dp"
         app:cardCornerRadius="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -23,11 +23,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:paddingTop="2dp"
+                android:paddingTop="4dp"
                 android:paddingBottom="2dp"
                 android:text="Titulo"
-                android:textColor="@color/colorPrimary"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -35,10 +34,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:paddingLeft="5dp"
-                android:paddingTop="2dp"
+                android:paddingTop="4dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="2dp"
-                android:text="Texto Post" />
+                android:text="Texto Post"
+         />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,7 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingLeft="5dp"
-                    android:text="Tags" />
+                    android:text="Tags"
+                    android:textColor="@android:color/holo_green_dark" />
 
                 <TextView
                     android:id="@+id/tvDate"
@@ -79,7 +80,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -106,6 +107,12 @@
                         android:text="V" />
                 </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPostId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
 
         </LinearLayout>
 

@@ -58,7 +58,9 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="40dp"
             android:layout_marginRight="15dp"
-            android:text="Iniciar Session" />
+            android:background="@color/colorPrimary"
+            android:text="Iniciar Session"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btnRegister"
@@ -67,6 +69,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="15dp"
-            android:text="Registrarse" />
+            android:background="@color/colorPrimary"
+            android:text="Registrarse"
+            android:textColor="@color/colorAccent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

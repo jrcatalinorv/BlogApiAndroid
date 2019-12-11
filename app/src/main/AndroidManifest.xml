@@ -12,12 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FormPost" android:parentActivityName=".MainMenu" ></activity>
+        <activity
+            android:name=".VistaPost"
+            android:label="Post"
+            android:parentActivityName=".MainMenu" />
+        <activity
+            android:name=".FormPost"
+            android:label="Nuevo Post"
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".MainMenu"
-            android:label="Lista Post"
-
-            />
+            android:label="Lista Post" />
         <activity
             android:name=".MainActivity"
             android:label=" Android BlogApi">

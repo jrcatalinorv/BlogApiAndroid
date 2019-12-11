@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import app.com.loginexample.adaptadores.AdaptadorEntrada;
@@ -35,13 +36,12 @@ public class MainMenu extends AppCompatActivity {
     private RecyclerView rvEntradasLista;
     private List<Entradas> entradasLista;
     private  AdaptadorEntrada adaptadorEntrada;
-
+    public static final String EXTRA_ID ="app.com.loginexample.EXTRA_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
 
         final  PostService postService = BlogApiServices
                 .getInstance().getPostService();
@@ -49,9 +49,7 @@ public class MainMenu extends AppCompatActivity {
         final SecurityService securityService = BlogApiServices
                 .getInstance().getSecurityService();
 
-
         rvEntradasLista = findViewById(R.id.rvListaPost);
-
 
         /* Obteniendo las variables almacenadas en el shared preferences */
         SharedPreferences pref = getApplicationContext().getSharedPreferences("BlogApiPref", MODE_PRIVATE);
@@ -61,16 +59,31 @@ public class MainMenu extends AppCompatActivity {
         pass = pref.getString("password", null);
         rvEntradasLista.setLayoutManager(new LinearLayoutManager(this));
 
+
+
+
         Call<List<Entradas>> call = postService.getEstrada("Bearer "+authToken);
         call.enqueue(new Callback<List<Entradas>>() {
             @Override
-            public void onResponse(Call<List<Entradas>> call, Response<List<Entradas>> response) {
+            public void onResponse(Call<List<Entradas>> call, final Response<List<Entradas>> response) {
                 if (response.isSuccessful()) {
 
                     entradasLista = response.body();
-                    adaptadorEntrada = new AdaptadorEntrada(entradasLista);
-                    rvEntradasLista.setAdapter(adaptadorEntrada);
 
+                    Collections.reverse(entradasLista);
+                    adaptadorEntrada = new AdaptadorEntrada(entradasLista);
+
+
+                    adaptadorEntrada.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            int id = entradasLista.get(rvEntradasLista.getChildAdapterPosition(v)).getId();
+                            viewPost(id);
+
+                        }
+                    });
+                    rvEntradasLista.setAdapter(adaptadorEntrada);
                 }else{
                     Toast.makeText(MainMenu.this, "Error: "+response.code(), Toast.LENGTH_SHORT).show();
                 }
@@ -85,7 +98,6 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
@@ -105,14 +117,12 @@ public class MainMenu extends AppCompatActivity {
                 /* Guardar mi token el en shared preference */
                 editor.putString("token", null);
                 editor.apply();
-                // editor.clear().commit();
                 salir();
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     public void  FormularioCrearNuevoPost(){
@@ -122,6 +132,12 @@ public class MainMenu extends AppCompatActivity {
 
     public  void  salir(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewPost(int id){
+        Intent intent = new Intent(this,VistaPost.class);
+        intent.putExtra(EXTRA_ID,String.valueOf(id));
         startActivity(intent);
     }
 }

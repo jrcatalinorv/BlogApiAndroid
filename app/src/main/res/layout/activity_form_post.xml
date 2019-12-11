@@ -14,7 +14,10 @@
         <EditText
             android:id="@+id/ptTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:ems="10"
             android:hint="Titulo de la Publicacion"
             android:inputType="textPersonName" />
@@ -23,6 +26,9 @@
             android:id="@+id/etBody"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:ems="10"
             android:gravity="top|left"
             android:hint="Escriba el contenido de la publicacion"
@@ -32,28 +38,40 @@
             android:id="@+id/etTags"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:ems="10"
-            android:hint="Tags"
+            android:hint="Tags { Separados por coma (,) }"
             android:inputType="textPersonName" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="30dp"
+            android:paddingRight="10dp">
 
             <Button
                 android:id="@+id/fpCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:text="Cancelar" />
+                android:background="@color/colorPrimary"
+                android:text="Cancelar"
+                android:textColor="@color/colorAccent" />
 
             <Button
                 android:id="@+id/fpSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:text="Guardar" />
+                android:background="@color/colorPrimary"
+                android:text="Guardar"
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
