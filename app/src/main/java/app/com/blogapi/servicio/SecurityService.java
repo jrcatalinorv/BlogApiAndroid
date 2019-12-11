@@ -1,11 +1,11 @@
-package app.com.loginexample.servicio;
+package app.com.blogapi.servicio;
 
 import android.util.Log;
 
 import java.util.List;
 
-import app.com.loginexample.entidades.Login;
-import app.com.loginexample.entidades.User;
+import app.com.blogapi.entidades.Login;
+import app.com.blogapi.entidades.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

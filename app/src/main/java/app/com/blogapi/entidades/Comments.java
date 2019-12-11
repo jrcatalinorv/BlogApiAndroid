@@ -1,4 +1,4 @@
-package app.com.loginexample.entidades;
+package app.com.blogapi.entidades;
 
 public class Comments {
 

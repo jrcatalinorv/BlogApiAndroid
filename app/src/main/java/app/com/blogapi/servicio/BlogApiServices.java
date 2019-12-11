@@ -1,4 +1,4 @@
-package app.com.loginexample.servicio;
+package app.com.blogapi.servicio;
 
 import com.google.gson.Gson;
 

@@ -1,4 +1,4 @@
-package app.com.loginexample;
+package app.com.blogapi;
 
 import org.junit.Test;
 

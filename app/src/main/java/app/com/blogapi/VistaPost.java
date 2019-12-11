@@ -1,4 +1,4 @@
-package app.com.loginexample;
+package app.com.blogapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,11 +17,11 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.List;
 
-import app.com.loginexample.adaptadores.AdaptadorComentario;
-import app.com.loginexample.entidades.Comments;
-import app.com.loginexample.entidades.Entradas;
-import app.com.loginexample.servicio.BlogApiServices;
-import app.com.loginexample.servicio.PostService;
+import app.com.blogapi.adaptadores.AdaptadorComentario;
+import app.com.blogapi.entidades.Comments;
+import app.com.blogapi.entidades.Entradas;
+import app.com.blogapi.servicio.BlogApiServices;
+import app.com.blogapi.servicio.PostService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

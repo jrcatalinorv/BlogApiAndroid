@@ -1,4 +1,4 @@
-package app.com.loginexample.adaptadores;
+package app.com.blogapi.adaptadores;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Arrays;
 import java.util.List;
-import app.com.loginexample.R;
-import app.com.loginexample.entidades.Entradas;
+import app.com.blogapi.R;
+import app.com.blogapi.entidades.Entradas;
 
 public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.ViewHolder>
         implements View.OnClickListener  {

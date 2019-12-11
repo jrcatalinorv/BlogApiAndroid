@@ -1,4 +1,4 @@
-package app.com.loginexample;
+package app.com.blogapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import app.com.loginexample.adaptadores.AdaptadorEntrada;
-import app.com.loginexample.entidades.Entradas;
-import app.com.loginexample.entidades.Login;
-import app.com.loginexample.entidades.User;
-import app.com.loginexample.servicio.BlogApiServices;
-import app.com.loginexample.servicio.PostService;
-import app.com.loginexample.servicio.SecurityService;
+import app.com.blogapi.adaptadores.AdaptadorEntrada;
+import app.com.blogapi.entidades.Entradas;
+import app.com.blogapi.entidades.Login;
+import app.com.blogapi.entidades.User;
+import app.com.blogapi.servicio.BlogApiServices;
+import app.com.blogapi.servicio.PostService;
+import app.com.blogapi.servicio.SecurityService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +36,7 @@ public class MainMenu extends AppCompatActivity {
     private RecyclerView rvEntradasLista;
     private List<Entradas> entradasLista;
     private  AdaptadorEntrada adaptadorEntrada;
-    public static final String EXTRA_ID ="app.com.loginexample.EXTRA_ID";
+    public static final String EXTRA_ID ="app.com.blogapi.EXTRA_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

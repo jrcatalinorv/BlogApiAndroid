@@ -1,4 +1,4 @@
-package app.com.loginexample;
+package app.com.blogapi;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("app.com.loginexample", appContext.getPackageName());
+        assertEquals("app.com.blogapi", appContext.getPackageName());
     }
 }

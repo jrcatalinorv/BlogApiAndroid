@@ -1,9 +1,9 @@
-package app.com.loginexample.servicio;
+package app.com.blogapi.servicio;
 
 import java.util.List;
 
-import app.com.loginexample.entidades.Comments;
-import app.com.loginexample.entidades.Entradas;
+import app.com.blogapi.entidades.Comments;
+import app.com.blogapi.entidades.Entradas;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

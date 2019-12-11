@@ -1,4 +1,4 @@
-package app.com.loginexample;
+package app.com.blogapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import app.com.loginexample.entidades.Login;
-import app.com.loginexample.entidades.User;
-import app.com.loginexample.servicio.BlogApiServices;
-import app.com.loginexample.servicio.SecurityService;
+import app.com.blogapi.entidades.Login;
+import app.com.blogapi.entidades.User;
+import app.com.blogapi.servicio.BlogApiServices;
+import app.com.blogapi.servicio.SecurityService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

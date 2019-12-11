@@ -1,4 +1,4 @@
-package app.com.loginexample.adaptadores;
+package app.com.blogapi.adaptadores;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import app.com.loginexample.R;
-import app.com.loginexample.entidades.Comments;
+
+import app.com.blogapi.entidades.Comments;
+import app.com.blogapi.R;
 
 public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentario.ViewHolder> {
 
