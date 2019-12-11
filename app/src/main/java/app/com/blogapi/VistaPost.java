@@ -105,27 +105,8 @@ public class VistaPost extends AppCompatActivity {
             }
         });
 
-        /* Mostar la lista de comentarios del post Seleccionado */
-        Call <List<Comments>> callComments  = postService.comentariosPost("Bearer "+authToken, Integer.parseInt(postId));
-        callComments.enqueue(new Callback<List<Comments>>() {
-            @Override
-            public void onResponse(Call<List<Comments>> callComments, Response<List<Comments>> responseComments) {
-
-                if (responseComments.isSuccessful()) {
-
-                    commentsList = responseComments.body();
-                    adaptadorComentario = new AdaptadorComentario(commentsList);
-                    rvcomentariosLista.setAdapter(adaptadorComentario);
-                }else{
-                    Toast.makeText(VistaPost.this, "Error Response Comentarios: "+responseComments.code(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Comments>> callComments, Throwable tComments) {
-                Toast.makeText(VistaPost.this, "Error buscando comentarios: "+tComments.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+       /* Desplegar los comentarios del post */
+        loadComments();
 
 
         /* Pulsar el boton de like */
@@ -183,8 +164,10 @@ public class VistaPost extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Comments> call, Response<Comments> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(VistaPost.this, "El comentario fue agregado con exito: "+response.code(), Toast.LENGTH_SHORT).show();
 
+
+                            Toast.makeText(VistaPost.this, "El comentario fue agregado con exito: "+response.code(), Toast.LENGTH_SHORT).show();
+                            loadComments();
                         }else{
                             Toast.makeText(VistaPost.this, "Error: "+response.code(), Toast.LENGTH_SHORT).show();
 
@@ -205,6 +188,39 @@ public class VistaPost extends AppCompatActivity {
 
     public static String convertArrayToString(String[] strArray) {
         return Arrays.toString(strArray);
+    }
+
+    public void loadComments(){
+
+
+        final PostService postService = BlogApiServices
+                .getInstance().getPostService();
+
+
+        /* Mostar la lista de comentarios del post Seleccionado */
+        Call <List<Comments>> callComments  = postService.comentariosPost("Bearer "+authToken, Integer.parseInt(postId));
+        callComments.enqueue(new Callback<List<Comments>>() {
+            @Override
+            public void onResponse(Call<List<Comments>> callComments, Response<List<Comments>> responseComments) {
+
+                if (responseComments.isSuccessful()) {
+
+                    commentsList = responseComments.body();
+                    adaptadorComentario = new AdaptadorComentario(commentsList);
+                    rvcomentariosLista.setAdapter(adaptadorComentario);
+                }else{
+                    Toast.makeText(VistaPost.this, "Error Response Comentarios: "+responseComments.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comments>> callComments, Throwable tComments) {
+                Toast.makeText(VistaPost.this, "Error buscando comentarios: "+tComments.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
     }
 
 }
