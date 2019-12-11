@@ -183,6 +183,7 @@ public class VistaPost extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Comments> call, Response<Comments> response) {
                         if (response.isSuccessful()) {
+                            Toast.makeText(VistaPost.this, "El comentario fue agregado con exito: "+response.code(), Toast.LENGTH_SHORT).show();
 
                         }else{
                             Toast.makeText(VistaPost.this, "Error: "+response.code(), Toast.LENGTH_SHORT).show();
