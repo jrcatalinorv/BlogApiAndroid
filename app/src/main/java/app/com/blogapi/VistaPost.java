@@ -176,9 +176,9 @@ public class VistaPost extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String texto = etComentario.getText().toString();
-
                 Comments comments = new Comments(texto,Integer.parseInt(postId),userEmail,userId,userName);
-                Call<Comments> call = postService.publicarComentario("Bearer "+authToken,comments);
+
+                Call<Comments> call = postService.publicarComentario("Bearer "+authToken,Integer.parseInt(postId),comments);
                 call.enqueue(new Callback<Comments>() {
                     @Override
                     public void onResponse(Call<Comments> call, Response<Comments> response) {

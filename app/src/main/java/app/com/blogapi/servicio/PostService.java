@@ -30,7 +30,7 @@ public interface PostService {
     Call<List<Comments>> comentariosPost(@Header("Authorization") String token, @Path("id") int id);
 
     @POST("post/{id}/comment")
-    Call<Comments> publicarComentario(@Header("Authorization") String token, @Body Comments comments);
+    Call<Comments> publicarComentario(@Header("Authorization") String token, @Path("id") int id, @Body Comments comments);
 
     @POST("post")
     Call <Entradas> entradaNueva(@Header("Authorization") String token, @Body Entradas entradas);
