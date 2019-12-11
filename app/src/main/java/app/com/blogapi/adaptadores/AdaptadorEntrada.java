@@ -1,11 +1,15 @@
 package app.com.blogapi.adaptadores;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Arrays;
@@ -18,6 +22,7 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
 
     public List<Entradas> dataPost;
     private View.OnClickListener listener;
+    public Context mContext;
 
 
     public AdaptadorEntrada(List<Entradas> dataPost){
@@ -27,6 +32,7 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
     @NonNull
     @Override
     public AdaptadorEntrada.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        mContext= parent.getContext();
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post,parent,false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -38,6 +44,8 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
     public void onBindViewHolder(@NonNull AdaptadorEntrada.ViewHolder holder, int position) {
 
        Entradas entradas = dataPost.get(position);
+
+       holder.cardView.setAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_transition_animation));
 
        holder.title.setText(entradas.getTitle());
        holder.body.setText(entradas.getBody());
@@ -67,6 +75,8 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView title, body, user, date, tags, comments, likes, viewsCty, id;
 
+        private CardView cardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tvTitle);
@@ -81,6 +91,7 @@ public class AdaptadorEntrada extends RecyclerView.Adapter<AdaptadorEntrada.View
             viewsCty = itemView.findViewById(R.id.tvViews);
             viewsCty.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_views, 0, 0, 0);
             id = itemView.findViewById(R.id.tvPostId);
+            cardView=itemView.findViewById(R.id.cardViewContainer);
         }
     }
 
