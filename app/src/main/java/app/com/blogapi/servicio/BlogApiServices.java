@@ -21,7 +21,6 @@ public class BlogApiServices {
                 .build();
     }
 
-    
     /* Decirle a retrofit que debe crear una instancia de la clase SecurityService   */
     public SecurityService getSecurityService(){
         return retrofit.create(SecurityService.class);

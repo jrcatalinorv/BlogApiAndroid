@@ -29,7 +29,6 @@ public interface PostService {
     @GET("post/{id}/comment")
     Call<List<Comments>> comentariosPost(@Header("Authorization") String token, @Path("id") int id);
 
-
     @POST("post")
     Call <Entradas> entradaNueva(@Header("Authorization") String token, @Body Entradas entradas);
 }
