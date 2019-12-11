@@ -18,9 +18,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:hint="Titulo de la Publicacion"
-            android:inputType="textPersonName" />
+            android:inputType="textMultiLine"
+            android:maxLength="50"
+            android:maxLines="3"
+            android:paddingLeft="5dp" />
 
         <EditText
             android:id="@+id/etBody"
@@ -29,21 +33,28 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:gravity="top|left"
             android:hint="Escriba el contenido de la publicacion"
-            android:inputType="textPersonName" />
+            android:inputType="textMultiLine"
+            android:paddingLeft="5dp" />
 
         <EditText
             android:id="@+id/etTags"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:hint="Tags { Separados por coma (,) }"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                android:background="@color/title_text_color"
                 android:text="Cancelar"
                 android:textColor="@color/colorAccent" />
 
@@ -69,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                android:background="@color/title_text_color"
                 android:text="Guardar"
                 android:textColor="@color/colorAccent" />
         </LinearLayout>

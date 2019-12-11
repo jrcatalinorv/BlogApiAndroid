@@ -40,6 +40,7 @@ public class FormPost extends AppCompatActivity {
 
         tituloPublicacion = findViewById(R.id.ptTitle);
         contenidoPublicacion = findViewById(R.id.etBody);
+        contenidoPublicacion.setMaxLines(10);
         tagsPublicacion = findViewById(R.id.etTags);
         cancelar= findViewById(R.id.fpCancel);
         guardar = findViewById(R.id.fpSave);
