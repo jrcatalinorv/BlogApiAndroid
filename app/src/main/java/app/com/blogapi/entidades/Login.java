@@ -1,14 +1,7 @@
 package app.com.blogapi.entidades;
 
 public class Login {
-
-
-    public Login(String email, String password, String name) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-    }
-
+    
     private String email, password, name;
 
     public String getEmail() {

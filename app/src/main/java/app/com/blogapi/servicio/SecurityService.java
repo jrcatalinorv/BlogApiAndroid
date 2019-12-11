@@ -19,11 +19,11 @@ public interface SecurityService {
     * */
 
     @POST("login")
-    public Call<User> login(@Body Login login);
+    Call<User> login(@Body Login login);
 
     @DELETE("logout")
-    public Call<User> logoff(@Header("Authorization") String token);
+    Call<User> logoff(@Header("Authorization") String token);
 
     @POST("register")
-    public Call<User> register (@Body Login login);
+    Call<User> register (@Body Login login);
 }

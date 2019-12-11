@@ -32,49 +32,57 @@
         <EditText
             android:id="@+id/rgNombre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:hint="Nombre"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
 
         <EditText
             android:id="@+id/rgEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:hint="Correo electronico"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
 
         <EditText
             android:id="@+id/rgPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:hint="Escriba  Contrasena"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingLeft="5dp" />
 
         <EditText
             android:id="@+id/rgPassword2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/tv_bg"
             android:ems="10"
             android:hint="Confirmar contrasena"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:paddingLeft="5dp" />
 
         <Button
             android:id="@+id/rgBtn"

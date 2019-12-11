@@ -1,6 +1,7 @@
 package app.com.blogapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -75,6 +76,7 @@ public class VistaPost extends AppCompatActivity {
         etComentario = findViewById(R.id.vpComentario);
         rvcomentariosLista = findViewById(R.id.rvComentarios);
 
+        rvcomentariosLista.setLayoutManager(new LinearLayoutManager(this));
         /*
         * Obtener los datos del Post Seleccionado
         * */
@@ -103,25 +105,26 @@ public class VistaPost extends AppCompatActivity {
             }
         });
 
-        /*
-        * Mostar la lista de comentarios del post Seleccionado
-        * */
+        /* Mostar la lista de comentarios del post Seleccionado */
         Call <List<Comments>> callComments  = postService.comentariosPost("Bearer "+authToken, Integer.parseInt(postId));
         callComments.enqueue(new Callback<List<Comments>>() {
             @Override
-            public void onResponse(Call<List<Comments>> call, Response<List<Comments>> response) {
-                if (response.isSuccessful()) {
-                    commentsList = response.body();
+            public void onResponse(Call<List<Comments>> callComments, Response<List<Comments>> responseComments) {
+
+                if (responseComments.isSuccessful()) {
+                    //Toast.makeText(VistaPost.this, "CC: "+responseComments.code(), Toast.LENGTH_SHORT).show();
+
+                    commentsList = responseComments.body();
                     adaptadorComentario = new AdaptadorComentario(commentsList);
                     rvcomentariosLista.setAdapter(adaptadorComentario);
                 }else{
-                    Toast.makeText(VistaPost.this, "Error Response Comentarios: "+response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VistaPost.this, "Error Response Comentarios: "+responseComments.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Comments>> call, Throwable t) {
-                Toast.makeText(VistaPost.this, "Error buscando comentarios: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<Comments>> callComments, Throwable tComments) {
+                Toast.makeText(VistaPost.this, "Error buscando comentarios: "+tComments.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

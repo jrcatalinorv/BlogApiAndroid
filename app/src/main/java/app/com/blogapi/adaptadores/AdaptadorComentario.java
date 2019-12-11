@@ -4,13 +4,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
-
 import app.com.blogapi.entidades.Comments;
 import app.com.blogapi.R;
 
@@ -34,8 +30,8 @@ public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentari
     public void onBindViewHolder(@NonNull AdaptadorComentario.ViewHolder holder, int position) {
 
         Comments comments = dataComments.get(position);
-        holder.author.setText(comments.getUseName()+" ("+comments.getUserEmail()+")");
-        holder.date.setText(comments.getCreatedAt());
+        holder.author.setText(comments.getUseName());
+        holder.date.setText(String.valueOf(comments.getCreatedAt()));
         holder.comment.setText(comments.getBody());
     }
 
@@ -57,6 +53,7 @@ public class AdaptadorComentario extends RecyclerView.Adapter<AdaptadorComentari
 
         }
     }
+
 
 
 }

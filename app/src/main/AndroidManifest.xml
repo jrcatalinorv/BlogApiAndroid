@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FormRegister"></activity>
+        <activity
+            android:name=".FormRegister"
+            android:parentActivityName=".MainActivity"
+            ></activity>
         <activity
             android:name=".VistaPost"
             android:label="Post"

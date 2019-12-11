@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
         final SecurityService securityService = BlogApiServices
                 .getInstance().getSecurityService();
 
-        /*
-        *
-        * */
+        /* Revisar si el token existe */
         SharedPreferences prefNew = getApplicationContext().getSharedPreferences("BlogApiPref", MODE_PRIVATE);
         validToken = prefNew.getString("token", null);
         if (validToken != null) {
@@ -46,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.etEmail);
         password = findViewById(R.id.etPassword);
         login = findViewById(R.id.btnLogin);
+        register = findViewById(R.id.btnRegister);
 
+        /* Guardar los datos en el SharedPreference */
         SharedPreferences pref = getApplicationContext().getSharedPreferences("BlogApiPref", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
 
@@ -89,10 +89,22 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrar();
+            }
+        });
     }
 
     public void acceder(){
         Intent intent = new Intent(this,MainMenu.class);
+        startActivity(intent);
+    }
+
+    public void registrar(){
+        Intent intent = new Intent(this,FormRegister.class);
         startActivity(intent);
     }
 }
